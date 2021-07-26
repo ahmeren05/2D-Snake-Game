@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none; 
+}
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 721px;
+    background: green;
+    height: 721px;
+    margin: auto;
+    font-family:fantasy;
+    position: relative;
+    overflow: hidden;
+}
+article>h1{
+    margin-top: -10px;
+    font-size: 92px;
+    font-family: 'VT323', monospace;       
+    animation: 3s forwards;
+}
+@keyframes article1h1 {
+    33%{opacity: 0;}
+    99%{opacity: 1;}
+}
+h1{
+    font-size: 4rem;
+    text-decoration: underline;
+    position: relative;
+    z-index: 1;
+}
+canvas{
+    box-shadow: 0px 0px 10px 1px black inset;
+    position: relative;
+    border:2px solid #444;
+    z-index: 1;
+    margin: 75px 0 25px 0;
+    background-image: url(Screenshot_2.jpg);
+    background-size:40px 40px;
+    animation: 1s 1s forwards;
+}
+body{
+    background-color:#082f14 ;
+}
+article>.info{
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 75px;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.score, .time{
+    border-radius: 5px;
+    height: 100%;
+    width: 75px;
+    background-color: gray;
+    opacity: 0.3;
+    font-size: 1rem;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+    animation: 1s 1s forwards;
+    z-index: 50;
+}
+.scorep,.timep{
+    text-align: center;
+    font-size: 2rem;
+}
+@keyframes canvas {
+    to{opacity: 1;}
+}
+@keyframes canvasinfo {
+    to{opacity: 0.4;}
+}
+img{
+    position: absolute;
+    width: 2000px;
+    z-index: 0;
+    top: -900px;
+    left:-650px;
+    animation: 1s forwards;
+}
+@keyframes phoneimg {
+    from{width:2000px;left: -650px;top:-900px}
+    to{width: 780px; left: -32px; top: -86px;}
+}
+.buttons{
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    border-radius:60px 60px 60px 60px;
+    background: #f0f0f0;
+    bottom: 42px;
+    font-family: sans-serif;
+    animation: 1s 1s forwards;
+    z-index: 51;
+}
+.buttons button{
+    position: absolute;
+    z-index: 4;
+    width: 31px;
+    outline: none;
+    border: 1px solid gray;
+    background-color: #f0f0f0;
+    box-shadow: gray;
+
+}
+.topbuttonactive, .topbutton:active{
+    transform: translateY(1px) rotate(270deg) !important;
+    box-shadow: -1px 0px #999 !important;
+}
+.downbuttonactive, .downbutton:active{
+    transform: translateY(1px) rotate(90deg);
+    box-shadow: 1px 0px #999;
+}
+.leftbuttonactive, .leftbutton:active{
+    transform: translateY(1px) rotate(180deg);
+    box-shadow: 0px -1px #999;
+}
+.rightbuttonactive, .rightbutton:active{
+    transform: translateY(1px) rotate(0deg);
+    box-shadow: 0px 1px #999;
+    background-color: #000;
+}
+.topbutton{
+    left: 85px;
+    top: -10px;
+    transform: rotate(270deg);
+    padding: 30px 10px;
+    height: 80px;
+    box-shadow: -3px 0px #999;
+}
+.downbutton{
+    left: 85px;
+    height: 80px;
+    bottom: -10px;
+    padding: 30px 10px;
+    transform: rotate(90deg);
+    box-shadow: 3px 0px #999;
+}
+.leftbutton{
+    left: 20px;
+    top: 35px;
+    transform: rotate(180deg);
+    height: 50px;
+    box-shadow: 0 -3px #999;
+}
+.rightbutton{
+    top: 35px;
+    box-shadow: 0 3px #999;
+    right: 20px;
+    transform: rotate(0deg);
+    height: 50px;
+}
+.gameoveralert{
+    position:absolute;
+    z-index: 101;
+    width: 500px;
+    padding: 20px;
+    height: 350px;
+    border-radius: 15px;
+    background-color: rgb(200,200,200);
+    z-index: -50;
+    opacity: 0;
+    animation: 1s forwards;   
+}
+@keyframes gameoveralert {
+    0%{z-index: -50;opacity: 0;}
+    1%{z-index: 100;}
+    100%{opacity: 1;z-index: 100;}
+}
+@keyframes gameoveralertreverse {
+    0%{z-index: 100;opacity: 1;}
+    99%{z-index: -50;}
+    100%{opacity: 0;z-index: -50;}
+}
+.gameoveralert h1{
+    text-decoration: none;
+    width: max-content;
+    margin: auto;
+}
+.gameoveralert h1:nth-child(2){
+    position:absolute;
+    margin: auto;
+    top: 10px;
+    left:65px;
+    color: gray;
+    opacity: 0.7;                        
+    font-size: 80px;
+}
+.gameoveralert h1:nth-child(1){
+    position: relative;
+    z-index: 2;
+}
+.gameoveralert h1:nth-child(3){
+    font-size:35px ;
+}
+.sis{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    z-index: 100;
+    width: 100%;
+    opacity: 0;
+    z-index: -50;
+    height: 100%;
+    animation: 1s forwards;
+}
+@keyframes sis {
+    0%{z-index: -50;opacity:0.5;}
+    1%{z-index: 100;}
+    100%{opacity: 0.5;z-index: 100;}
+}
+@keyframes sisreverse {
+    0%{z-index: 100;opacity: 0.5;}
+    99%{z-index: 100;}
+    100%{opacity: 0;z-index: -50}
+}
+.gameoveralert button{
+    font-size: 35px;
+    padding: 15px 20px;
+    font-family: 'VT323', monospace; 
+}
+.gameoveralert p{
+    text-align: center;
+    margin-top: 15px;
+}
+canvas,.time,.score,.buttons{
+    opacity: 0;    
+}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+.startbutton{
+    font-size: 50px;
+    position: absolute;
+    z-index: 10;
+    padding: 20px 50px;
+    margin: 150px 0;
+    border-radius:10px;
+    background-color: #082f14;
+    color:white;
+    font-family: 'VT323', monospace; 
+    outline: none;
+    border: none;     
+    opacity: 1;
+    display: initial;
+    animation: 1s;
+    animation-fill-mode:forwards ;
+}
+
+.howtoplay{
+    position: absolute;
+    z-index: 10;
+    padding:30px;
+    background-color: rgba(0,0, 0, 0.4);
+    color: #000;
+    animation: 1s;
+    bottom: 50px;
+    animation-fill-mode:forwards;   
+    display: initial;
+    z-index: 100;
+}
+@keyframes howtoplay {
+    0%{opacity: 1;}
+    99%{display:initial;}
+    100%{opacity: 0;display:none;z-index: -50;visibility: hidden;}
+}
+.howtoplay h1{
+    position: absolute;
+    z-index: -1;
+    color:rgba(0,0, 0, 0.4);
+    font-size: 110px;
+    width: 95%;
+    top: 10px;
+    text-align: center;
+    text-decoration: none;
+
+}
+.howtoplay p{
+    position: relative;
+    z-index: 15;
+}
+.howtoplay p a{
+    text-decoration:none;
+    color: black;
+}
