@@ -6,13 +6,15 @@ function Snake (){
     this.total = 0;
     this.tail = [];
     var skin = new Image();
-    skin.src="NewPiksel4.png";
+    var head = new Image();
+    skin.src="body.png";
+    head.src="head.png"
     this.draw = function() {
         context.fillStyle = "black";
         for (let i = 0; i < this.tail.length; i++) {
             context.drawImage(skin,this.tail[i].x, this.tail[i].y, scale, scale)
         }
-        context.drawImage(skin,this.x, this.y, scale, scale);
+        context.drawImage(head,this.x, this.y, scale, scale);
     }
     this.update = function() {
         for (let i = 0; i < this.tail.length - 1; i++) {
