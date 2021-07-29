@@ -160,6 +160,7 @@ function Snake (){
             if (muteunmute) {
             impactsound.play();
             }
+            document.querySelector(".akıbeth1").innerHTML="YOU HİT WALL"
             return true;
         }
         return false;
@@ -170,6 +171,7 @@ function Snake (){
             if (muteunmute) {
             impactsound.play();
             }
+            document.querySelector(".akıbeth1").innerHTML="YOU HİT WALL"
             return true;
         }
         return false;
