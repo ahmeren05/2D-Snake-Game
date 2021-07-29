@@ -89,3 +89,5 @@ $(document).on('click', '.toggle-sound', function(e) {
         themesound.play();
     }
 });
+
+console.log("son güncelleme tarihi : 29.07.21 - 12.54")
