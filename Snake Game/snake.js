@@ -1,6 +1,6 @@
 function Snake (){
     this.x = 100; //x koordinatındaki konumu, ölçünün katı olmak zorunda
-    this.y = 100; //y koordinatındaki konumu, ölçünün katı olamk zorunda
+    this.y = 100; //y koordinatındaki konumu, ölçünün katı olmak zorunda
     this.xSpeed = 0;
     this.ySpeed = 0;
     this.total = 0;
@@ -40,33 +40,48 @@ function Snake (){
         }
     }
     this.chanceDirection = function (direction) {
-
+        if (bcheck) {
         switch(direction){ //4 tane olayımız var
             case 'Up'://yukarı oka basıldığında
             if (this.ySpeed != scale * 1 ) {
+                if (this.ySpeed != -scale * 1) {
+                    directionsoundplay()
+                }
                 this.xSpeed = 0; // x ekseninde hareket olmayacak.
                 this.ySpeed = -scale * 1; // y ekseni eksi ölçü kadar hareket edecek.
             }
+
             break;
             case 'Down'://aşağı oka basıldığında
             if (this.ySpeed != -scale * 1) {
+                if (this.ySpeed != scale * 1) {
+                    directionsoundplay()
+                }
                 this.xSpeed = 0; // x ekseninde hareket olmayacak.
                 this.ySpeed = scale * 1; // y ekseni artı ölçü kadar hareket edecek.
             }
             break
             case 'Left'://sol oka basıldığında
             if (this.xSpeed != scale * 1) {
+                if (this.xSpeed != -scale * 1) {
+                    directionsoundplay()
+                }
                 this.ySpeed = 0; // y ekseninde hareket olmayacak.
                 this.xSpeed = -scale * 1; // x ekseni eksi ölçü kadar hareket edecek.
             }
             break
             case 'Right'://yukarı oka basıldığında
+
             if (this.xSpeed != -scale * 1) {
+                if (this.xSpeed != scale * 1) {
+                    directionsoundplay()
+                }
                 this.ySpeed = 0; // y ekseninde hareket olmayacak.
                 this.xSpeed = scale * 1; // x ekseni artı ölçü kadar hareket edecek.
             }
             break
         }
+    }
     }
     var rightbutton = document.querySelector(".rightbutton")
     var leftbutton = document.querySelector(".leftbutton")
@@ -74,37 +89,73 @@ function Snake (){
     var downbutton = document.querySelector(".downbutton")
     rightbutton.addEventListener("click", function () {
         if (snake.xSpeed != -scale * 1) {
-            snake.ySpeed = 0; 
-            snake.xSpeed = scale * 1; 
+            if (snake.xSpeed != scale * 1) {
+                directionsoundplay()
+            }
+            snake.ySpeed = 0; // y ekseninde hareket olmayacak.
+            snake.xSpeed = scale * 1; // x ekseni artı ölçü kadar hareket edecek.
         }
         startreducecheck()
     })
     leftbutton.addEventListener("click", function () {
         if (snake.xSpeed != scale * 1) {
-            snake.ySpeed = 0; 
-            snake.xSpeed = -scale * 1; 
+            if (snake.xSpeed != -scale * 1) {
+                directionsoundplay()
+            }
+            snake.ySpeed = 0; // y ekseninde hareket olmayacak.
+            snake.xSpeed = -scale * 1; // x ekseni eksi ölçü kadar hareket edecek.
         }
         startreducecheck()
     })
     topbutton.addEventListener("click", function () {
-        if (snake.ySpeed != scale * 1) {
-            snake.xSpeed = 0; 
-            snake.ySpeed = -scale * 1;
+        if (snake.ySpeed != scale * 1 ) {
+            if (snake.ySpeed != -scale * 1) {
+                directionsoundplay()
+            }
+            snake.xSpeed = 0; // x ekseninde hareket olmayacak.
+            snake.ySpeed = -scale * 1; // y ekseni eksi ölçü kadar hareket edecek.
         }
         startreducecheck()
     })
     downbutton.addEventListener("click", function () {
         if (snake.ySpeed != -scale * 1) {
-            snake.xSpeed = 0; // y ekseninde hareket olmayacak.
-            snake.ySpeed = scale * 1; // x ekseni artı ölçü kadar hareket edecek.
+            if (snake.ySpeed != scale * 1) {
+                directionsoundplay()
+            }
+            snake.xSpeed = 0; // x ekseninde hareket olmayacak.
+            snake.ySpeed = scale * 1; // y ekseni artı ölçü kadar hareket edecek.
         }
         startreducecheck()
     })
     this.eat = function (friut) {
         if(this.x === friut.x && this.y === friut.y){
             this.total++;
+            var eatsound = new Audio("eatsound.mp3")
+            eatsound.play();
             return true;
         }
         return false;
     }
+    this.impact = function (barrier) {
+        if((this.x === barrier.x && this.y === barrier.y)){
+            var impactsound = new Audio("impact.mp3")
+            impactsound.play();
+            return true;
+        }
+        return false;
+    }
+    this.impact2 = function (barrier2) {
+        if(this.x == barrier2.x && this.y == barrier2.y){
+            var impactsound = new Audio("impact.mp3")
+            impactsound.play();
+            return true;
+        }
+        return false;
+    }
+}
+
+
+var directionsound = new Audio("directionsound.mp3");
+function directionsoundplay() {
+    directionsound.play();
 }

@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">    
+    <link rel="shortcut icon" href="Screenshot_1.jpg" type="image/x-icon">
 </head>
 <body>
     <!--
@@ -21,6 +22,9 @@
     -->
     <div class="sis"></div>
     <article>
+        <div class="playtoready">
+            <p>Press one of direction keys to start</p>
+        </div>
         <div class="gameoveralert">
             <h1>TİME İS UP</h1>
             <h1>GAME OVER</h1>
@@ -30,12 +34,12 @@
         </div>
         <img src="Screenshot_1-removebg-preview.png" alt="">
         <h1>PUNCTUAL SNAKE</h1>
-        <button class="startbutton">
+        <button class="startbutton onhoverbutton">
             START
         </button>
         <div class="howtoplay">
             <h1>How To Play</h1>
-            <p>Click start button and click any one of direction keys to start</p>
+            <p>Click start button and press one of direction keys to start</p>
             <p>Try to earn the most points in the limited time. if you eat apple you earn extra time. move with direction keys or direction buttons. Your score determines the time you earn for each apple.</p>
             <p>Author: Ahmet Hızır Eren</p>
             <p><a href="https://www.instagram.com/ahmeren05/?hl=tr">Intagram</a> & <a href="https://twitter.com/ahmeren05">Twitter</a> : @ahmeren05, Mail : <a href="mailto:ahmethizireren@gmail.com">ahmethizireren@gmail.com</a></p>
@@ -45,6 +49,7 @@
         <div class="info">
             <div class="time">
                 <p>TİME LEFT:</p>
+                <p class="timepbef">0</p>
                 <p class="timep"></p>
             </div>
             <div class="score">
@@ -62,6 +67,8 @@
     <script src="main.js"> // main </script>
     <script src="friut.js"> // friut </script>
     <script src="snake.js"> // snake </script>
+    <script src="barrier.js"> // barrier </script>    
+    <script src="barrier2.js"> // barrier </script>    
     <script src="draw.js"> // draw </script>
 </body>
 </html>

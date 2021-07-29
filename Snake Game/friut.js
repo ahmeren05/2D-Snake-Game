@@ -12,3 +12,4 @@ function Friut() {
     context.drawImage(apple,this.x, this.y, scale, scale);
     }
 }
+

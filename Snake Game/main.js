@@ -1,3 +1,9 @@
+var engeller = ["dik", "yan"]
+var hangiengel = Math.floor(Math.random() * engeller.length+1);
+var bcheck = true;
+var reducecheck = false
+
+
 var imgs = document.querySelectorAll("img");
 for (let index = 0; index < imgs.length; index++) {
     imgs[index].oncontextmenu = function (event) {
@@ -15,6 +21,20 @@ for (i = 0; i < imgs.length; i++) {
 
 var startbutton = document.querySelector(".startbutton")
 startbutton.addEventListener("click",function() {
+    if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+        setTimeout(() => {
+            if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+            document.querySelector(".playtoready").style.display = "initial"; 
+            }
+        }, 2000);
+    }
+    
+    if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+        themesoundfunc(2000)
+    }else{
+        themesoundfunc(0)
+    }
+
 document.querySelector(".howtoplay").style.animationName="howtoplay";
 startbutton.style.animationName="howtoplay"
 document.querySelector("img").style.animationName="phoneimg"
@@ -24,4 +44,32 @@ document.querySelector(".time").style.animationName="canvasinfo"
 document.querySelector("canvas").style.animationName="canvas"
 document.querySelector("article > h1").style.animationName="article1h1"
 bigcheck();
+var whooshaudio = new Audio("whoosh.mp3")
+whooshaudio.play()
 })
+
+
+
+var tryagain = document.querySelector(".gameoveralert > p > button")
+var Buttonhoversound = new Audio("buttonhoversound.mp3")
+function buttonhoversound(button) {
+    button.addEventListener("mouseover",function () {
+        Buttonhoversound.play()
+    })
+}
+buttonhoversound(startbutton);
+buttonhoversound(tryagain)
+var Buttonclicksound = new Audio("buttonclicksound.mp3")
+function buttonclicksound(button) {
+    button.addEventListener("click",function () {
+        Buttonclicksound.play()
+    })
+}
+buttonclicksound(startbutton);
+buttonclicksound(tryagain)
+
+var body = document.querySelector("body")
+body.click();
+function WhichButton(event) {
+    
+}

@@ -11,14 +11,27 @@ const canvas = document.querySelector("canvas");
         timecheck = 5;
         var firstclickcontrol=0;
         (function setup() {
+            barrier2 = new Barrier2();
             snake = new Snake();
             friut = new Friut();
+            barrier = new Barrier();
+            barrier.pickLocation();
+            barrier2.pickLocation();
             friut.pickLocation();
             window.setInterval(() =>{
+
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 snake.draw();
                 snake.update();
                 friut.draw();
+                barrier2.draw();
+                barrier.draw();
+                if (snake.impact(barrier) || snake.impact2(barrier2)) {
+
+                    gameOver()
+                    barrier.pickLocation();
+                    barrier2.pickLocation();
+                }
                 if(snake.eat(friut)){
                     friut.pickLocation(); // elmaya yeni konum şeç
                     score.innerHTML++;
@@ -40,15 +53,26 @@ const canvas = document.querySelector("canvas");
             },1000/12)
         })();
         function bigcheck() {
-            window.addEventListener("keydown", ((event) => {
-            const direction = event.key.replace("Arrow" , '') //yönler dizisi
-            snake.chanceDirection(direction); //chanceDirection fonksiyonunu direction değişken(dizi) parametresi ile çalıştır.
-            if (direction == "Down" || direction == "Up" || direction == "Right" || direction == "Left") {
-                startreducecheck()
-            }
-        }))
+                window.addEventListener("keydown", ((event) => {
+                    var direction = event.key.replace("Arrow" , '') //yönler dizisi
+                    snake.chanceDirection(direction); //chanceDirection fonksiyonunu direction değişken(dizi) parametresi ile çalıştır.
+                    if (direction == "Down" || direction == "Up" || direction == "Right" || direction == "Left") {
+                        bcheck == true;
+                        if (bcheck) {
+                            startreducecheck()
+                        }
+                        document.querySelector(".playtoready").style.display="none";
+                    }
+                }))
+
         }
         function startreducecheck() {
+            if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+                themesoundfunc(2000)
+            }else{
+                themesoundfunc(0)
+            }
+            document.querySelector(".playtoready").style.display="none";
             firstclickcontrol++;
             if(firstclickcontrol==1){
                 startTime(true);
@@ -65,20 +89,56 @@ const canvas = document.querySelector("canvas");
                 }, 1000);
             }
         }
+
         function gameOver() {
+            bcheck=false;
+            var tiemd = document.querySelector(".timepbef")
+            tiemd.style.display = "initial";                     
+            time.innerHTML=5;
+            snake = new Snake();
+            themesound.pause();
+            gameoversound();
             var point = 0;
             point = score.innerHTML;
-            snake = new Snake();
             startTime(false)
             document.querySelector(".sis").style.animationName="sis";
             document.querySelector(".gameoveralert").style.animationName="gameoveralert"
             document.querySelector(".gameoveralert-p").innerHTML=point;
             document.querySelector(".gameoveralert > p > button").addEventListener("click",function() {
+                bcheck=true;
+                barrier.pickLocation();
+                barrier2.pickLocation();
+                tiemd.style.display = "none";                     
+                themesoundfunc(1000)
                 document.querySelector(".sis").style.animationName="sisreverse"
                 document.querySelector(".gameoveralert").style.animationName="gameoveralertreverse"
                 score.innerHTML=1;
                 timecheck=5;
                 time.innerHTML=timecheck
                 friut.pickLocation();
+                setTimeout(() => {
+                    document.querySelector(".playtoready").style.display = "initial";                     
+                }, 1000);
             })
         }
+        var firsttime = 0;
+        var gameover = new Audio("gameover.mp3")
+        function gameoversound() {
+            gameover.play();
+        } 
+
+
+// canvasa sağ tıklanılmasın
+canvas.oncontextmenu = function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+    return false
+}
+
+var themesound = new Audio("theme.mp3")
+function themesoundfunc(themesounddelay) {
+    setTimeout(() => {
+        themesound.play();
+        themesound.loop = true;
+    }, themesounddelay);
+}
