@@ -58,6 +58,7 @@ const canvas = document.querySelector("canvas");
                     }
                 }
                 if (time.innerHTML == 0) {
+                    document.querySelector(".akıbeth1").innerHTML="TİME İS UP"
                     gameOver()
                 }
             },1000/12)
@@ -101,6 +102,7 @@ const canvas = document.querySelector("canvas");
         }
 
         function gameOver() {
+            document.querySelector(".playtoready").style.display = "none";
             bcheck=false;
             var tiemd = document.querySelector(".timepbef")
             tiemd.style.display = "initial";                     
@@ -115,6 +117,15 @@ const canvas = document.querySelector("canvas");
             document.querySelector(".gameoveralert").style.animationName="gameoveralert"
             document.querySelector(".gameoveralert-p").innerHTML=point;
             document.querySelector(".gameoveralert > p > button").addEventListener("click",function() {
+                if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+                    setTimeout(() => {
+                        if (snake.xSpeed == 0 && snake.ySpeed == 0) {
+                        document.querySelector(".playtoready").style.display = "initial"; 
+                        }
+                    }, 1000);
+                }else{
+                    document.querySelector(".playtoready").style.display = "none"; 
+                }
                 bcheck=true;
                 barrier.pickLocation();
                 barrier2.pickLocation();
@@ -126,9 +137,7 @@ const canvas = document.querySelector("canvas");
                 timecheck=5;
                 time.innerHTML=timecheck
                 friut.pickLocation();
-                setTimeout(() => {
-                    document.querySelector(".playtoready").style.display = "initial";                     
-                }, 1000);
+
             })
         }
         var firsttime = 0;

@@ -82,8 +82,10 @@ var muteunmute = true;
 $(document).on('click', '.toggle-sound', function(e) {
     $(this).toggleClass('sound-mute');
     if (muteunmute == true) {
+        themesound.pause();
         muteunmute=false        
     }else{
         muteunmute=true
+        themesound.play();
     }
 });
