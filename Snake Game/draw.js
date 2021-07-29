@@ -19,7 +19,17 @@ const canvas = document.querySelector("canvas");
             barrier2.pickLocation();
             friut.pickLocation();
             window.setInterval(() =>{
-
+                for (let index = 0; index < snake.tail.length; index++) {
+                    if (snake.tail[index].y === friut.y && snake.tail[index].x === friut.x) {
+                        friut.pickLocation();
+                    }
+                }
+                if (friut.x === barrier.x && friut.y === barrier.y) {
+                    friut.pickLocation();
+                }
+                if (friut.x === barrier2.x && friut.y === barrier2.y) {
+                    friut.pickLocation();
+                }
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 snake.draw();
                 snake.update();
@@ -124,7 +134,9 @@ const canvas = document.querySelector("canvas");
         var firsttime = 0;
         var gameover = new Audio("gameover.mp3")
         function gameoversound() {
-            gameover.play();
+            if (muteunmute) {
+                gameover.play();
+            }
         } 
 
 
@@ -138,7 +150,12 @@ canvas.oncontextmenu = function (event) {
 var themesound = new Audio("theme.mp3")
 function themesoundfunc(themesounddelay) {
     setTimeout(() => {
+        if (muteunmute) {
         themesound.play();
+        }
         themesound.loop = true;
     }, themesounddelay);
 }
+
+
+    

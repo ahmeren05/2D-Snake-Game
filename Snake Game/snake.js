@@ -45,7 +45,9 @@ function Snake (){
             case 'Up'://yukarı oka basıldığında
             if (this.ySpeed != scale * 1 ) {
                 if (this.ySpeed != -scale * 1) {
+                    if (muteunmute) {
                     directionsoundplay()
+                    }
                 }
                 this.xSpeed = 0; // x ekseninde hareket olmayacak.
                 this.ySpeed = -scale * 1; // y ekseni eksi ölçü kadar hareket edecek.
@@ -55,7 +57,9 @@ function Snake (){
             case 'Down'://aşağı oka basıldığında
             if (this.ySpeed != -scale * 1) {
                 if (this.ySpeed != scale * 1) {
-                    directionsoundplay()
+                    if (muteunmute) {
+                        directionsoundplay()
+                        }
                 }
                 this.xSpeed = 0; // x ekseninde hareket olmayacak.
                 this.ySpeed = scale * 1; // y ekseni artı ölçü kadar hareket edecek.
@@ -64,7 +68,9 @@ function Snake (){
             case 'Left'://sol oka basıldığında
             if (this.xSpeed != scale * 1) {
                 if (this.xSpeed != -scale * 1) {
-                    directionsoundplay()
+                    if (muteunmute) {
+                        directionsoundplay()
+                        }
                 }
                 this.ySpeed = 0; // y ekseninde hareket olmayacak.
                 this.xSpeed = -scale * 1; // x ekseni eksi ölçü kadar hareket edecek.
@@ -74,7 +80,9 @@ function Snake (){
 
             if (this.xSpeed != -scale * 1) {
                 if (this.xSpeed != scale * 1) {
-                    directionsoundplay()
+                    if (muteunmute) {
+                        directionsoundplay()
+                        }
                 }
                 this.ySpeed = 0; // y ekseninde hareket olmayacak.
                 this.xSpeed = scale * 1; // x ekseni artı ölçü kadar hareket edecek.
@@ -90,7 +98,9 @@ function Snake (){
     rightbutton.addEventListener("click", function () {
         if (snake.xSpeed != -scale * 1) {
             if (snake.xSpeed != scale * 1) {
-                directionsoundplay()
+                if (muteunmute) {
+                    directionsoundplay()
+                    }
             }
             snake.ySpeed = 0; // y ekseninde hareket olmayacak.
             snake.xSpeed = scale * 1; // x ekseni artı ölçü kadar hareket edecek.
@@ -100,7 +110,9 @@ function Snake (){
     leftbutton.addEventListener("click", function () {
         if (snake.xSpeed != scale * 1) {
             if (snake.xSpeed != -scale * 1) {
-                directionsoundplay()
+                if (muteunmute) {
+                    directionsoundplay()
+                    }
             }
             snake.ySpeed = 0; // y ekseninde hareket olmayacak.
             snake.xSpeed = -scale * 1; // x ekseni eksi ölçü kadar hareket edecek.
@@ -110,7 +122,9 @@ function Snake (){
     topbutton.addEventListener("click", function () {
         if (snake.ySpeed != scale * 1 ) {
             if (snake.ySpeed != -scale * 1) {
-                directionsoundplay()
+                if (muteunmute) {
+                    directionsoundplay()
+                    }
             }
             snake.xSpeed = 0; // x ekseninde hareket olmayacak.
             snake.ySpeed = -scale * 1; // y ekseni eksi ölçü kadar hareket edecek.
@@ -120,7 +134,9 @@ function Snake (){
     downbutton.addEventListener("click", function () {
         if (snake.ySpeed != -scale * 1) {
             if (snake.ySpeed != scale * 1) {
-                directionsoundplay()
+                if (muteunmute) {
+                    directionsoundplay()
+                    }
             }
             snake.xSpeed = 0; // x ekseninde hareket olmayacak.
             snake.ySpeed = scale * 1; // y ekseni artı ölçü kadar hareket edecek.
@@ -131,7 +147,9 @@ function Snake (){
         if(this.x === friut.x && this.y === friut.y){
             this.total++;
             var eatsound = new Audio("eatsound.mp3")
+            if (muteunmute) {
             eatsound.play();
+            }
             return true;
         }
         return false;
@@ -139,7 +157,9 @@ function Snake (){
     this.impact = function (barrier) {
         if((this.x === barrier.x && this.y === barrier.y)){
             var impactsound = new Audio("impact.mp3")
+            if (muteunmute) {
             impactsound.play();
+            }
             return true;
         }
         return false;
@@ -147,7 +167,9 @@ function Snake (){
     this.impact2 = function (barrier2) {
         if(this.x == barrier2.x && this.y == barrier2.y){
             var impactsound = new Audio("impact.mp3")
+            if (muteunmute) {
             impactsound.play();
+            }
             return true;
         }
         return false;
@@ -157,5 +179,7 @@ function Snake (){
 
 var directionsound = new Audio("directionsound.mp3");
 function directionsoundplay() {
+    if (muteunmute) {
     directionsound.play();
+    }
 }

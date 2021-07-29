@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">    
     <link rel="shortcut icon" href="Screenshot_1.jpg" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
     <!--
@@ -22,6 +24,14 @@
     -->
     <div class="sis"></div>
     <article>
+        <div class="unmuted toggle-sound"  href="#">
+            <div class="tooltip--left sound" data-tooltip="Turn On/Off Sound">
+              <div class="sound--icon fa fa-volume-off"></div>
+              <div class="sound--wave sound--wave_one"></div>
+              <div class="sound--wave sound--wave_two"></div>
+              <div class="sound--wave sound--wave_three"></div>
+            </div>
+        </div>
         <div class="playtoready">
             <p>Press one of direction keys to start</p>
         </div>
@@ -64,6 +74,7 @@
             <button class="leftbutton">></button>
         </div>
     </article>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="main.js"> // main </script>
     <script src="friut.js"> // friut </script>
     <script src="snake.js"> // snake </script>

@@ -45,7 +45,9 @@ document.querySelector("canvas").style.animationName="canvas"
 document.querySelector("article > h1").style.animationName="article1h1"
 bigcheck();
 var whooshaudio = new Audio("whoosh.mp3")
+if (muteunmute) {
 whooshaudio.play()
+}
 })
 
 
@@ -54,7 +56,9 @@ var tryagain = document.querySelector(".gameoveralert > p > button")
 var Buttonhoversound = new Audio("buttonhoversound.mp3")
 function buttonhoversound(button) {
     button.addEventListener("mouseover",function () {
+        if (muteunmute) {
         Buttonhoversound.play()
+        }
     })
 }
 buttonhoversound(startbutton);
@@ -62,7 +66,9 @@ buttonhoversound(tryagain)
 var Buttonclicksound = new Audio("buttonclicksound.mp3")
 function buttonclicksound(button) {
     button.addEventListener("click",function () {
+        if (muteunmute) {
         Buttonclicksound.play()
+        }
     })
 }
 buttonclicksound(startbutton);
@@ -70,6 +76,14 @@ buttonclicksound(tryagain)
 
 var body = document.querySelector("body")
 body.click();
-function WhichButton(event) {
-    
-}
+
+
+var muteunmute = true;
+$(document).on('click', '.toggle-sound', function(e) {
+    $(this).toggleClass('sound-mute');
+    if (muteunmute == true) {
+        muteunmute=false        
+    }else{
+        muteunmute=true
+    }
+});
