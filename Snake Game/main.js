@@ -82,12 +82,14 @@ var muteunmute = true;
 $(document).on('click', '.toggle-sound', function(e) {
     $(this).toggleClass('sound-mute');
     if (muteunmute == true) {
+        muteunmute=false;
         themesound.pause();
-        muteunmute=false        
     }else{
+        if (themesoundcheck) {
+            themesound.play();
+        }
         muteunmute=true
-        themesound.play();
     }
 });
 
-console.log("son güncelleme tarihi : 29.07.21 - 12.54")
+

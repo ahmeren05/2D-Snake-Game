@@ -155,9 +155,10 @@ canvas.oncontextmenu = function (event) {
     event.stopPropagation()
     return false
 }
-
+var themesoundcheck;
 var themesound = new Audio("theme.mp3")
 function themesoundfunc(themesounddelay) {
+    themesoundcheck=true;
     setTimeout(() => {
         if (muteunmute) {
         themesound.play();
